@@ -6,14 +6,7 @@
   <title>pump.rekt - Windows XP Edition</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      user-select: none;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
     
     body {
       font-family: 'Tahoma', 'Segoe UI', sans-serif;
@@ -22,13 +15,11 @@
       background: linear-gradient(180deg, #245EDC 0%, #3A6BC5 30%, #7EC850 50%, #5DAB34 100%);
     }
     
-    /* Desktop */
     .desktop {
       height: calc(100vh - 40px);
       padding: 20px;
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
       gap: 20px;
     }
     
@@ -43,15 +34,10 @@
       width: 80px;
     }
     
-    .desktop-icon:hover {
-      background: rgba(11, 97, 255, 0.3);
-    }
+    .desktop-icon:hover { background: rgba(11, 97, 255, 0.3); }
     
     .desktop-icon .icon-emoji {
-      width: 48px;
-      height: 48px;
       font-size: 42px;
-      text-align: center;
       filter: drop-shadow(1px 1px 1px rgba(0,0,0,0.5));
     }
     
@@ -62,7 +48,6 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     }
     
-    /* Taskbar */
     .taskbar {
       position: fixed;
       bottom: 0;
@@ -90,12 +75,7 @@
       height: 32px;
     }
     
-    .taskbar-items {
-      flex: 1;
-      display: flex;
-      padding: 0 8px;
-      gap: 4px;
-    }
+    .taskbar-items { flex: 1; display: flex; padding: 0 8px; gap: 4px; }
     
     .taskbar-item {
       background: linear-gradient(180deg, #3C7FD9 0%, #245ED7 50%, #1847B1 100%);
@@ -126,7 +106,6 @@
       color: white;
     }
     
-    /* Window */
     .window {
       position: absolute;
       background: #ECE9D8;
@@ -137,12 +116,10 @@
       overflow: hidden;
     }
     
-    .window.open {
-      display: flex;
-    }
+    .window.open { display: flex; }
     
     .window-titlebar {
-      background: linear-gradient(180deg, #0A246A 0%, #0A246A 3%, #1B58C0 6%, #3089FF 10%, #56A8FF 14%, #378DE5 20%, #196CE5 27%, #0855DD 54%, #0855DD 70%, #0455E4 75%, #1068EE 82%, #359FF8 88%, #3BA4FC 92%, #0871E9 100%);
+      background: linear-gradient(180deg, #0A246A 0%, #1B58C0 6%, #3089FF 10%, #378DE5 20%, #0855DD 54%, #1068EE 82%, #0871E9 100%);
       padding: 4px 6px;
       display: flex;
       align-items: center;
@@ -159,10 +136,7 @@
       text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
     }
     
-    .window-buttons {
-      display: flex;
-      gap: 2px;
-    }
+    .window-buttons { display: flex; gap: 2px; }
     
     .window-btn {
       width: 21px;
@@ -174,12 +148,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(180deg, #3C8DE5 0%, #2A70C8 45%, #2462B4 55%, #4093E7 100%);
+      background: linear-gradient(180deg, #3C8DE5 0%, #2A70C8 45%, #4093E7 100%);
       color: white;
     }
     
     .window-btn.close {
-      background: linear-gradient(180deg, #E58A78 0%, #C75050 45%, #B33B3B 55%, #E07C6C 100%);
+      background: linear-gradient(180deg, #E58A78 0%, #C75050 45%, #E07C6C 100%);
     }
     
     .window-toolbar {
@@ -218,7 +192,14 @@
     
     .window-content {
       flex: 1;
+      background: #101211;
       overflow: hidden;
+    }
+    
+    .window-content iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
     
     .resize-handle {
@@ -229,373 +210,6 @@
       height: 16px;
       cursor: nwse-resize;
       background: linear-gradient(135deg, transparent 50%, #ACA899 50%, #ACA899 60%, transparent 60%, transparent 70%, #ACA899 70%);
-    }
-
-    /* ========== PUMP.FUN FAKE UI ========== */
-    .pump-container {
-      font-family: 'Inter', sans-serif;
-      background: #101211;
-      color: #eceeed;
-      height: 100%;
-      display: flex;
-      overflow: hidden;
-    }
-    
-    .pump-sidebar {
-      width: 168px;
-      background: #101211;
-      border-right: 1px solid #2e3130;
-      padding: 16px 8px;
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-    }
-    
-    .pump-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 0 8px 16px;
-      font-weight: 600;
-      font-size: 14px;
-    }
-    
-    .pump-logo-icon {
-      width: 24px;
-      height: 24px;
-      background: #86efac;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-    }
-    
-    .pump-nav-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 12px;
-      color: #adb5b2;
-      font-size: 13px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-    
-    .pump-nav-item:hover {
-      background: #171918;
-      color: #eceeed;
-    }
-    
-    .pump-nav-item.active {
-      background: #171918;
-      color: #eceeed;
-    }
-    
-    .pump-create-btn {
-      margin-top: auto;
-      background: #86efac;
-      color: #000;
-      border: none;
-      padding: 12px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    
-    .pump-create-btn:hover {
-      background: #4ade80;
-    }
-    
-    .pump-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-    }
-    
-    .pump-header {
-      height: 56px;
-      border-bottom: 1px solid #2e3130;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-    }
-    
-    .pump-search {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #171918;
-      border: 1px solid #2e3130;
-      border-radius: 8px;
-      padding: 8px 12px;
-      width: 280px;
-    }
-    
-    .pump-search input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #eceeed;
-      font-size: 13px;
-      flex: 1;
-    }
-    
-    .pump-search input::placeholder {
-      color: #63706b;
-    }
-    
-    .pump-header-btns {
-      display: flex;
-      gap: 12px;
-    }
-    
-    .pump-btn-green {
-      background: #86efac;
-      color: #000;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    
-    .pump-btn-outline {
-      background: transparent;
-      color: #eceeed;
-      border: 1px solid #2e3130;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-weight: 500;
-      font-size: 13px;
-      cursor: pointer;
-    }
-    
-    .pump-content {
-      flex: 1;
-      overflow-y: auto;
-      padding: 24px;
-    }
-    
-    .pump-section-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    
-    .pump-carousel {
-      display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 24px;
-    }
-    
-    .pump-carousel::-webkit-scrollbar {
-      height: 4px;
-    }
-    
-    .pump-carousel::-webkit-scrollbar-thumb {
-      background: #2e3130;
-      border-radius: 2px;
-    }
-    
-    .pump-trending-card {
-      flex-shrink: 0;
-      width: 200px;
-      height: 160px;
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .pump-trending-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    }
-    
-    .pump-trending-card > * {
-      position: relative;
-      z-index: 1;
-    }
-    
-    .pump-trending-mcap {
-      color: #86efac;
-      font-weight: 700;
-      font-size: 16px;
-    }
-    
-    .pump-trending-name {
-      font-weight: 600;
-      font-size: 13px;
-    }
-    
-    .pump-trending-desc {
-      font-size: 11px;
-      color: #adb5b2;
-      margin-top: 4px;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    
-    .pump-filters {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-    
-    .pump-filter {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 500;
-      cursor: pointer;
-      background: #171918;
-      border: 1px solid #2e3130;
-      color: #adb5b2;
-    }
-    
-    .pump-filter.active {
-      background: #86efac;
-      color: #000;
-      border-color: #86efac;
-    }
-    
-    .pump-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 16px;
-    }
-    
-    .pump-coin-card {
-      background: #171918;
-      border: 1px solid #2e3130;
-      border-radius: 12px;
-      padding: 16px;
-      cursor: pointer;
-      transition: border-color 0.2s;
-    }
-    
-    .pump-coin-card:hover {
-      border-color: #5b625f;
-    }
-    
-    .pump-coin-row {
-      display: flex;
-      gap: 12px;
-    }
-    
-    .pump-coin-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 8px;
-      background: #2e3130;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 32px;
-      flex-shrink: 0;
-    }
-    
-    .pump-coin-info {
-      flex: 1;
-      min-width: 0;
-    }
-    
-    .pump-coin-name {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    
-    .pump-coin-ticker {
-      color: #63706b;
-      font-size: 12px;
-    }
-    
-    .pump-coin-creator {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 6px;
-      font-size: 11px;
-      color: #63706b;
-    }
-    
-    .pump-coin-creator-avatar {
-      width: 16px;
-      height: 16px;
-      background: #86efac;
-      border-radius: 50%;
-      font-size: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .pump-coin-stats {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 8px;
-    }
-    
-    .pump-coin-mcap {
-      font-size: 12px;
-      color: #63706b;
-    }
-    
-    .pump-coin-mcap strong {
-      color: #eceeed;
-      font-weight: 600;
-    }
-    
-    .pump-coin-bar {
-      flex: 1;
-      height: 4px;
-      background: #2e3130;
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    
-    .pump-coin-bar-fill {
-      height: 100%;
-      background: #86efac;
-      border-radius: 2px;
-    }
-    
-    .pump-coin-change {
-      font-size: 11px;
-      font-weight: 600;
-    }
-    
-    .pump-coin-change.up { color: #22c55e; }
-    .pump-coin-change.down { color: #ef4444; }
-    
-    .pump-coin-desc {
-      margin-top: 10px;
-      font-size: 11px;
-      color: #adb5b2;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
     }
 
     /* Destroyer */
@@ -672,25 +286,28 @@
     
     .destroy-overlay.hidden { display: none; }
     
-    /* Open real pump.fun button */
-    .open-real-btn {
-      position: fixed;
-      bottom: 50px;
-      right: 20px;
-      background: #86efac;
-      color: #000;
-      padding: 12px 24px;
-      border-radius: 12px;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 100;
-      font-size: 14px;
-      box-shadow: 0 4px 20px rgba(134, 239, 172, 0.4);
+    .loading-msg {
+      color: #86efac;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 16px;
     }
     
-    .open-real-btn:hover {
-      background: #4ade80;
-      transform: translateY(-2px);
+    .loading-msg .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #2e3130;
+      border-top-color: #86efac;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
     }
   </style>
 </head>
@@ -725,7 +342,6 @@
     </div>
   </div>
   
-  <!-- Browser Window -->
   <div class="window" id="browserWindow" style="width: 1000px; height: 700px; left: 80px; top: 30px;">
     <div class="window-titlebar" id="titlebar">
       <span>🌐</span>
@@ -739,209 +355,30 @@
     <div class="window-toolbar">
       <button class="toolbar-btn">← Back</button>
       <button class="toolbar-btn">→</button>
-      <button class="toolbar-btn">🔄</button>
+      <button class="toolbar-btn" onclick="reloadFrame()">🔄</button>
       <div class="address-bar">
         <span>📍</span>
-        <input type="text" value="https://pump.fun" readonly>
+        <input type="text" value="https://pump.fun" id="addressBar">
       </div>
     </div>
-    <div class="window-content">
-      <!-- FAKE PUMP.FUN UI -->
-      <div class="pump-container">
-        <div class="pump-sidebar">
-          <div class="pump-logo">
-            <div class="pump-logo-icon">🎯</div>
-            <span>Pump<span style="color:#ef4444">.rekt</span></span>
-          </div>
-          <div class="pump-nav-item active">🏠 Home</div>
-          <div class="pump-nav-item">📺 Livestreams</div>
-          <div class="pump-nav-item">📊 Terminal</div>
-          <div class="pump-nav-item">💬 Chat</div>
-          <div class="pump-nav-item">❓ Support</div>
-          <div class="pump-nav-item">⋮ More</div>
-          <button class="pump-create-btn">Create coin</button>
-        </div>
-        <div class="pump-main">
-          <div class="pump-header">
-            <div class="pump-search">
-              <span>🔍</span>
-              <input type="text" placeholder="Search...">
-              <span style="color:#63706b;font-size:11px">⌘K</span>
-            </div>
-            <div class="pump-header-btns">
-              <button class="pump-btn-green">Create coin</button>
-              <button class="pump-btn-outline">Log in</button>
-            </div>
-          </div>
-          <div class="pump-content">
-            <div class="pump-section-title">Trending coins</div>
-            <div class="pump-carousel">
-              <div class="pump-trending-card" style="background: linear-gradient(135deg, #1a1a2e, #16213e);">
-                <div class="pump-trending-mcap">$131.16M</div>
-                <div class="pump-trending-name">The White Whale</div>
-                <div class="pump-trending-desc">White Whale Returns to $100M Amid Broader Market Decline</div>
-              </div>
-              <div class="pump-trending-card" style="background: linear-gradient(135deg, #2d132c, #801336);">
-                <div class="pump-trending-mcap">$499.45K</div>
-                <div class="pump-trending-name">Accelerando</div>
-                <div class="pump-trending-desc">Are We Just Living in Accelerando Now?</div>
-              </div>
-              <div class="pump-trending-card" style="background: linear-gradient(135deg, #1a3a1a, #2d5a2d);">
-                <div class="pump-trending-mcap">$47.87M</div>
-                <div class="pump-trending-name">Buttcoin 🍑</div>
-                <div class="pump-trending-desc">When They Said "Buy The Bottom" Is This What They Meant?</div>
-              </div>
-              <div class="pump-trending-card" style="background: linear-gradient(135deg, #1f1f1f, #3a3a3a);">
-                <div class="pump-trending-mcap">$18.71M</div>
-                <div class="pump-trending-name">PENGUIN 🐧</div>
-                <div class="pump-trending-desc">One Penguin's Final Walk Becomes a Rallying Cry</div>
-              </div>
-            </div>
-            
-            <div class="pump-filters">
-              <div class="pump-filter active">🚀 Movers</div>
-              <div class="pump-filter">🔴 Live</div>
-              <div class="pump-filter">⚡ New</div>
-              <div class="pump-filter">💰 Market cap</div>
-              <div class="pump-filter">🔥 Mayhem</div>
-              <div class="pump-filter">📅 Oldest</div>
-              <div class="pump-filter">💬 Last reply</div>
-            </div>
-            
-            <div class="pump-grid">
-              <div class="pump-coin-card">
-                <div class="pump-coin-row">
-                  <div class="pump-coin-img">🐸</div>
-                  <div class="pump-coin-info">
-                    <div class="pump-coin-name">Nihao</div>
-                    <div class="pump-coin-ticker">Nihao</div>
-                    <div class="pump-coin-creator">
-                      <div class="pump-coin-creator-avatar">🐸</div>
-                      <span>DGgN1x · 2h ago</span>
-                    </div>
-                    <div class="pump-coin-stats">
-                      <span class="pump-coin-mcap">MC <strong>$26.3K</strong></span>
-                      <div class="pump-coin-bar"><div class="pump-coin-bar-fill" style="width:65%"></div></div>
-                      <span class="pump-coin-change down">↓ 10.48%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="pump-coin-desc">how the dips look at me when im already down 80%</div>
-              </div>
-              
-              <div class="pump-coin-card">
-                <div class="pump-coin-row">
-                  <div class="pump-coin-img">🤖</div>
-                  <div class="pump-coin-info">
-                    <div class="pump-coin-name">ai.com Dave</div>
-                    <div class="pump-coin-ticker">AI.COM</div>
-                    <div class="pump-coin-creator">
-                      <div class="pump-coin-creator-avatar">🤖</div>
-                      <span>CWJV9h · 5m ago</span>
-                    </div>
-                    <div class="pump-coin-stats">
-                      <span class="pump-coin-mcap">MC <strong>$41.4K</strong></span>
-                      <div class="pump-coin-bar"><div class="pump-coin-bar-fill" style="width:82%"></div></div>
-                      <span class="pump-coin-change up">↑ 1244.71%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="pump-coin-desc">Accelerating the arrival of AGI. For the good of Memes</div>
-              </div>
-              
-              <div class="pump-coin-card">
-                <div class="pump-coin-row">
-                  <div class="pump-coin-img">💩</div>
-                  <div class="pump-coin-info">
-                    <div class="pump-coin-name">Shitcoin</div>
-                    <div class="pump-coin-ticker">SHITCOIN</div>
-                    <div class="pump-coin-creator">
-                      <div class="pump-coin-creator-avatar">💩</div>
-                      <span>9vqXe6 · 49m ago</span>
-                    </div>
-                    <div class="pump-coin-stats">
-                      <span class="pump-coin-mcap">MC <strong>$183.2K</strong></span>
-                      <div class="pump-coin-bar"><div class="pump-coin-bar-fill" style="width:91%"></div></div>
-                      <span class="pump-coin-change down">↓ 15.27%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="pump-coin-desc">What comes out your butt? Shit. Shitcoin.</div>
-              </div>
-              
-              <div class="pump-coin-card">
-                <div class="pump-coin-row">
-                  <div class="pump-coin-img">⏰</div>
-                  <div class="pump-coin-info">
-                    <div class="pump-coin-name">not wrong, just early</div>
-                    <div class="pump-coin-ticker">early</div>
-                    <div class="pump-coin-creator">
-                      <div class="pump-coin-creator-avatar">⏰</div>
-                      <span>6SEVgH · 1m ago</span>
-                    </div>
-                    <div class="pump-coin-stats">
-                      <span class="pump-coin-mcap">MC <strong>$9.8K</strong></span>
-                      <div class="pump-coin-bar"><div class="pump-coin-bar-fill" style="width:34%"></div></div>
-                      <span class="pump-coin-change up">↑ 62.48%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="pump-coin-desc">I'M NOT WRONG, JUST EARLY</div>
-              </div>
-              
-              <div class="pump-coin-card">
-                <div class="pump-coin-row">
-                  <div class="pump-coin-img">🧌</div>
-                  <div class="pump-coin-info">
-                    <div class="pump-coin-name">Pump Trollbox</div>
-                    <div class="pump-coin-ticker">TROLLBOX</div>
-                    <div class="pump-coin-creator">
-                      <div class="pump-coin-creator-avatar">🧌</div>
-                      <span>DjlJKV · 1d ago</span>
-                    </div>
-                    <div class="pump-coin-stats">
-                      <span class="pump-coin-mcap">MC <strong>$50.9K</strong></span>
-                      <div class="pump-coin-bar"><div class="pump-coin-bar-fill" style="width:78%"></div></div>
-                      <span class="pump-coin-change down">↓ 13.07%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="pump-coin-desc">Deployed using https://j7tracker.com</div>
-              </div>
-              
-              <div class="pump-coin-card">
-                <div class="pump-coin-row">
-                  <div class="pump-coin-img">🥜</div>
-                  <div class="pump-coin-info">
-                    <div class="pump-coin-name">Nutcoin</div>
-                    <div class="pump-coin-ticker">Nutcoin</div>
-                    <div class="pump-coin-creator">
-                      <div class="pump-coin-creator-avatar">🥜</div>
-                      <span>EtBq5a · 3h ago</span>
-                    </div>
-                    <div class="pump-coin-stats">
-                      <span class="pump-coin-mcap">MC <strong>$6.2K</strong></span>
-                      <div class="pump-coin-bar"><div class="pump-coin-bar-fill" style="width:45%"></div></div>
-                      <span class="pump-coin-change up">↑ 14.69%</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="pump-coin-desc">The world's first $Nutcoin is born before your eyes</div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="window-content" id="windowContent">
+      <div class="loading-msg" id="loadingMsg">
+        <div class="spinner"></div>
+        <div>Loading pump.fun via proxy...</div>
       </div>
+      <!-- 
+        IMPORTANT: Replace PROXY_URL with your Cloudflare Worker URL
+        Example: https://pump-proxy.your-subdomain.workers.dev
+      -->
+      <iframe 
+        id="pumpFrame"
+        src=""
+        style="display:none;"
+        onload="frameLoaded()"
+      ></iframe>
     </div>
     <div class="resize-handle" id="resizeHandle"></div>
   </div>
-  
-  <!-- INSTRUCTIONS: 
-     1. Deploy the Cloudflare Worker (see cloudflare-worker.js)
-     2. Replace YOUR_WORKER_URL below with your worker URL
-     3. Uncomment the iframe version below
--->
-<a href="https://pump.fun" target="_blank" class="open-real-btn">🚀 Open real pump.fun</a>
   
   <div class="taskbar">
     <button class="start-button">
@@ -961,6 +398,12 @@
   </div>
 
   <script>
+    // ============================================
+    // CONFIGURATION - SET YOUR PROXY URL HERE
+    // ============================================
+    const PROXY_URL = 'http://193.247.77.44:3456';
+    // ============================================
+    
     let mode = 'browse';
     let score = 0;
     const particles = ["💥", "🔥", "💀", "☠️", "🤯", "😵", "📉", "🔨", "💣"];
@@ -976,20 +419,14 @@
       const hole = document.createElement('div');
       hole.className = 'hole';
       const size = 60 + Math.random() * 40;
-      hole.style.width = size + 'px';
-      hole.style.height = size + 'px';
-      hole.style.left = (e.clientX - size/2) + 'px';
-      hole.style.top = (e.clientY - size/2) + 'px';
+      hole.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-size/2}px;top:${e.clientY-size/2}px`;
       document.getElementById('holes').appendChild(hole);
       
       for (let i = 0; i < 8; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
         p.textContent = particles[Math.floor(Math.random() * particles.length)];
-        p.style.left = e.clientX + 'px';
-        p.style.top = e.clientY + 'px';
-        p.style.setProperty('--tx', (Math.random() - 0.5) * 300 + 'px');
-        p.style.setProperty('--ty', (Math.random() - 0.5) * 300 + 'px');
+        p.style.cssText = `left:${e.clientX}px;top:${e.clientY}px;--tx:${(Math.random()-0.5)*300}px;--ty:${(Math.random()-0.5)*300}px`;
         document.getElementById('particles').appendChild(p);
         setTimeout(() => p.remove(), 800);
       }
@@ -1025,6 +462,35 @@
       browserWindow.classList.add('open');
       taskbarItem.style.display = 'flex';
       taskbarItem.classList.add('active');
+      
+      // Load iframe with proxy
+      const frame = document.getElementById('pumpFrame');
+      if (!frame.src || frame.src === '') {
+        if (PROXY_URL && PROXY_URL !== 'PROXY_URL_HERE') {
+          frame.src = PROXY_URL;
+        } else {
+          document.getElementById('loadingMsg').innerHTML = `
+            <div style="color:#ef4444;font-size:14px;text-align:center;padding:20px;">
+              ⚠️ Proxy not configured!<br><br>
+              <span style="color:#adb5b2;font-size:12px;">
+                1. Deploy the Cloudflare Worker (see cloudflare-worker.js)<br>
+                2. Edit this file and set PROXY_URL at the top<br><br>
+                Or: <a href="https://pump.fun" target="_blank" style="color:#86efac;">Open pump.fun directly →</a>
+              </span>
+            </div>
+          `;
+        }
+      }
+    }
+    
+    function frameLoaded() {
+      document.getElementById('loadingMsg').style.display = 'none';
+      document.getElementById('pumpFrame').style.display = 'block';
+    }
+    
+    function reloadFrame() {
+      const frame = document.getElementById('pumpFrame');
+      frame.src = frame.src;
     }
     
     function closeWindow() {
